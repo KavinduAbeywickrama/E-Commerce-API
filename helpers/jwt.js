@@ -22,6 +22,7 @@ function authJwt() {
         algorithms: ["HS256"]
     });
     console.log("from authJwt", jwotoken);
+    console.log("from authJwt", secret);
     return jwotoken;
 }
 
