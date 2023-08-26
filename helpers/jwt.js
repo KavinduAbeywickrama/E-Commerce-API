@@ -11,15 +11,18 @@
 // }
 
 // module.exports = authJwt;
-const { jwt } = require("express-jwt");
+var { expressjwt: jwt } = require("express-jwt");
 
 function authJwt() {
+    console.log("from authJwt");
     const secret = process.env.secret;
     const api = process.env.API_URL;
-    return jwt({  // Use lowercase 'jwt' here
+    const jwotoken = jwt({  // Use lowercase 'jwt' here
         secret,
         algorithms: ["HS256"]
     });
+    console.log("from authJwt", jwotoken);
+    return jwotoken;
 }
 
 module.exports = authJwt;
