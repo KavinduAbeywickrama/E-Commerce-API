@@ -60,20 +60,20 @@ router.post('/login', async (req, res) => {
         return res.status(400).send('The user not found');  
     }
 
-    if(user && !bcrypt.compareSync(req.body.password, user.passwordHash)) {
+    if(user && bcrypt.compareSync(req.body.password, user.passwordHash)) {
+         console.log(user);
          const token = jwt.sign(
             {
-                userId: user.id
+                userId: user.id,
+                isAdmin: user.isAdmin
             },
             secret,
             {expiresIn: '1d'}
-        )
-               
+        )            
         res.status(200).send({user: user.email, token: token});
     } else {
         res.status(400).send('The password is wrong!');
-    } 
- 
+    }  
 });
 
 module.exports = router;

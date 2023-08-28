@@ -5,18 +5,26 @@ const app = express();
 function myAuthJwt() {
     const secret = process.env.secret;
     const api = process.env.API_URL;
-    console.log("inside the jwt")
+    
     return jwt({
         secret: secret,
         algorithms: ["HS256"],
+       // isRevoked: isRevoked,
+        
     }).unless({ 
         path: [
-            {url:'/api/v1/products', methods: ['GET', 'OPTIONS']},
-            
-            'api/v1/users/login',
-            'api/v1/users/register'
+            //{url:'/api/v1/products', methods: ['GET', 'OPTIONS']},            
+            `${api}/users/login`,
+            `${api}/users/register`
         ]
     })             
 }
+
+// async function isRevoked(req, payload, done) {
+//     if(!payload.isAdmin) {
+//         done(null, true)
+//     }
+//     done();
+// }
 
 module.exports = myAuthJwt;

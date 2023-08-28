@@ -17,16 +17,13 @@ app.use(bodyParser.json());
 app.use(morgan("tiny"));
 app.use(errorHandler);
 
-
 const productRoutes = require("./routes/products");
 const usersRoutes = require("./routes/users");
-
 
 const api = process.env.API_URL;
 
 app.use(`${api}/products`, productRoutes);
 app.use(`${api}/users`, usersRoutes);
-
 
 mongoose
   .connect(process.env.CONNECTION_STRING)
