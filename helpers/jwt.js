@@ -7,17 +7,14 @@ function myAuthJwt() {
     const api = process.env.API_URL;
     
     return jwt({
-        secret: secret,
-        algorithms: ["HS256"],
-       // isRevoked: isRevoked,
-        
-    }).unless({ 
-        path: [
-            //{url:'/api/v1/products', methods: ['GET', 'OPTIONS']},            
-            `${api}/users/login`,
-            `${api}/users/register`
-        ]
-    })             
+    secret: secret,
+    algorithms: ["HS256"],
+    //isRevoked:isRevoked,
+}).unless({
+    path: [
+        { url: '/api/v1/products', methods: ['GET', 'OPTIONS'] },`${api}/users/login`,`${api}/users/register`]
+});
+            
 }
 
 // async function isRevoked(req, payload, done) {

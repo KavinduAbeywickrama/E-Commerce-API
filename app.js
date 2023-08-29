@@ -8,13 +8,14 @@ require("dotenv/config");
 const authJwt = require("./helpers/jwt");
 const errorHandler = require("./helpers/error-handler");
 
-app.use(authJwt());
+
 app.use(cors());
 app.options("*", cors());
 
 //middleware
 app.use(bodyParser.json());
 app.use(morgan("tiny"));
+app.use(authJwt());
 app.use(errorHandler);
 
 const productRoutes = require("./routes/products");
