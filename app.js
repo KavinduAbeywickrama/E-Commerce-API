@@ -22,6 +22,7 @@ const productRoutes = require("./routes/products");
 const usersRoutes = require("./routes/users");
 const categoryRoutes = require("./routes/categories");
 
+
 const api = process.env.API_URL;
 
 app.use(`${api}/products`, productRoutes);
