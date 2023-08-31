@@ -77,7 +77,10 @@ router.post('/login', async (req, res) => {
 });
 
 router.get(`/get/count`, async (req, res) =>{
-    const userCount = await User.countDocuments((count) => count)
+    
+    const userCount = await User.countDocuments();
+
+    console.log("Hello1")
 
     if(!userCount) {
         res.status(500).json({success: false})
@@ -85,6 +88,6 @@ router.get(`/get/count`, async (req, res) =>{
     res.send({
         userCount: userCount
     });
-}) 
+})  
 
 module.exports = router;
