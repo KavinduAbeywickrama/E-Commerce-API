@@ -9,6 +9,9 @@ const authJwt = require("./helpers/jwt");
 const errorHandler = require("./helpers/error-handler");
 
 
+
+
+
 app.use(cors());
 app.options("*", cors());
 
@@ -18,6 +21,7 @@ app.use(morgan("tiny"));
 app.use(authJwt());
 app.use(errorHandler);
 
+const ordersRoutes = require("./routes/orders");
 const productRoutes = require("./routes/products");
 const usersRoutes = require("./routes/users");
 const categoryRoutes = require("./routes/categories");
@@ -28,7 +32,7 @@ const api = process.env.API_URL;
 app.use(`${api}/products`, productRoutes);
 app.use(`${api}/users`, usersRoutes);
 app.use(`${api}/categories`, categoryRoutes);
-
+app.use(`${api}/orders`, ordersRoutes);
 
 
 mongoose
