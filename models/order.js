@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const OrderItem = require("./orderitems").OrderItem;
 
 const orderSchema = new mongoose.Schema({
     orderItems: [{
@@ -55,6 +56,7 @@ orderSchema.set("toJSON", {
     virtuals: true,
 });
 
+
 exports.Order = mongoose.model('Order', orderSchema);
 
 // order Example
@@ -76,11 +78,7 @@ exports.Order = mongoose.model('Order', orderSchema);
 //     "zip": "1234",
 //     "country": "1234",
 //     "phone": "1234",
-//     "status": "1234",
-//     "totalPrice": 1234,
 //     "user": "5f1f7b7b8b9b3e1b1c3b1b1b",
-//     "dateOrdered": "2020-07-27T18: 00: 00.000Z",
-//     "_id": "5f1f7b7b8b9b3e1b1c3b1b1b",
-//     "__v": 0
+
 // }
 
