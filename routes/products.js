@@ -114,7 +114,6 @@ router.put('/:id', async(req, res)=> {
       {new: true}
   )
 
-
   if(!product) {
       return res.status(400).send('the product cannot be created!')  
   }

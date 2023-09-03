@@ -24,9 +24,8 @@ router.put('/:id', async(req, res)=> {
 
     if(!category) {
         return res.status(400).send('the category cannot be created!')
-
-        res.send(category);
     }
+    res.send(category);    
 })
 
 
@@ -47,8 +46,6 @@ router.get(`/`, async (req, res) => {
     }
     res.send(categoryList);
 });
-
-
 
 router.post('/', async (req, res) => {
     let category = new Category({

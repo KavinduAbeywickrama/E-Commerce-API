@@ -24,7 +24,7 @@ router.get('/:id', async (req, res) => {
 
 });
 
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
     try {               
         let user = new User({
             name: req.body.name,
@@ -78,9 +78,7 @@ router.post('/login', async (req, res) => {
 
 router.get(`/get/count`, async (req, res) =>{
     
-    const userCount = await User.countDocuments();
-
-    console.log("Hello1")
+    const userCount = await User.countDocuments();    
 
     if(!userCount) {
         res.status(500).json({success: false})
