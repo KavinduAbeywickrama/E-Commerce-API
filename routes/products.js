@@ -45,8 +45,6 @@ router.get(`/`, async (req, res) => {
     res.send(productList);
   });
 
-
-
   router.get(`/:id`, async (req, res) => {
     const product = await Product.findById(req.params.id).populate('category');
 
@@ -55,7 +53,6 @@ router.get(`/`, async (req, res) => {
     }
     res.send(product);
   });
-
   
   router.post(`/`, uploadOptions.single('image'), async (req, res) => {
     const category = await Category.findById(req.body.category);
@@ -115,11 +112,9 @@ router.put('/:id', async(req, res)=> {
 
 
   if(!product) {
-      return res.status(400).send('the product cannot be created!')
-      
-      res.send(product);
-
+      return res.status(400).send('the product cannot be created!')  
   }
+  res.send(product);
 })
 
 router.delete('/:id', (req, res)=>{
